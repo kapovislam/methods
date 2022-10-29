@@ -1,25 +1,18 @@
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.Scanner;
 
 public class Main {
-    private static int countDayDelivery(int deliveryDistance) {
-        int deliveryDay = 1;
-        int i = deliveryDay + 1;
-        int b = i + 1;
-        if (deliveryDistance < 20) {
-            return deliveryDay;
-        } else if (deliveryDistance >= 20 && deliveryDistance < 60) {
-            return i;
-        } else if (deliveryDistance >= 60 && deliveryDistance <= 100) {
-            return b;
-        }
+    private static double countDayDelivery(double deliveryDistance) {
+
+        int deliveryDay = (int) Math.ceil((deliveryDistance + 21) / 40);
         return deliveryDay;
 
     }
 
     private static void printRecommendedVersion(int osClient, int yearClintDevice) {
         int currentYear = LocalDate.now().getYear();
-        if (yearClintDevice == 0 || yearClintDevice > currentYear) {
+        if (yearClintDevice > currentYear) {
             System.out.println("Этот год еще не наступил");
             return;
         }
@@ -61,9 +54,12 @@ public class Main {
          * Наша задача — доработать код, а именно написать метод, который на вход принимает дистанцию
          * и возвращает итоговое количество дней доставки.
          */
-        int distance = 75;
-        int day = countDayDelivery(distance);
-        System.out.println("Потребуется дней: " + day);
+        int distance = 140;
+        double day = countDayDelivery(distance);
+        DecimalFormat decimalFormat = new DecimalFormat();
+        String day1 = decimalFormat.format(day);
+        System.out.print("Потребуется дней: " + day1);
+
     }
 
     private static void task2() {
@@ -73,8 +69,8 @@ public class Main {
          * и год выпуска устройства.
          * Если устройство старше текущего года, предложите ему установить lite-версию (облегченную версию).
          */
-        int deviceYear = 2022;
-        int clientOs = 4;
+        int deviceYear = 2021;
+        int clientOs = 1;
         printRecommendedVersion(clientOs, deviceYear);
     }
 
