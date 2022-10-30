@@ -3,11 +3,9 @@ import java.time.LocalDate;
 import java.util.Scanner;
 
 public class Main {
-    private static double countDayDelivery(double deliveryDistance) {
-
+    private static int countDayDelivery(double deliveryDistance) {
         int deliveryDay = (int) Math.ceil((deliveryDistance + 21) / 40);
         return deliveryDay;
-
     }
 
     private static void printRecommendedVersion(int osClient, int yearClintDevice) {
@@ -55,10 +53,8 @@ public class Main {
          * и возвращает итоговое количество дней доставки.
          */
         int distance = 140;
-        double day = countDayDelivery(distance);
-        DecimalFormat decimalFormat = new DecimalFormat();
-        String day1 = decimalFormat.format(day);
-        System.out.print("Потребуется дней: " + day1);
+        int day = countDayDelivery(distance);
+        System.out.print("Потребуется дней: " + day);
 
     }
 
